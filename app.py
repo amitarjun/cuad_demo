@@ -203,6 +203,23 @@ if Run_Button == True and not len(contract)==0 and st.session_state.boolean == F
 						ans = ans.replace("\xe2\x80\x99", "'")
 						ans = ans.replace("\xc2\xa0", " ")
 						ans = unidecode.unidecode(ans)
+						j = len(ans) - 1
+						s = -1
+						e = -1
+						ef = 0
+						sf = 0
+						for i in range(len(ans)):
+							if ans[i] == '.' and sf == 0:
+								s = i
+								sf = 1
+							if ans[j] == '.' and ef == 0:
+								ef = 1
+								e = j
+							j -= 1
+						if len(ans[:s+1]) <= 10:
+							ans = ans[i+1:]
+						if len(ans[e:] <= 10:
+						       ans = ans[:e]
 						st.write(str(i+1)+".\t"+f"Question: {ques}\n\n\tAnswer: {ans}"+"\n\n ")
 					except:
 						st.write(str(i + 1) + ".\t" + f"Question: {ques}\n\n\tAnswer: Couldn't find the answer\n\n")
